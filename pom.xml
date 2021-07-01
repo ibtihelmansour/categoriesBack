@@ -14,8 +14,10 @@
 	<name>categoriesApp-1</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11.0.7</java.version>
-	</properties>
+		<java.version>11</java.version>
+	    <maven.compiler.source>11</maven.compiler.source>
+	    <maven.compiler.target>11</maven.compiler.target>
+</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -25,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -42,11 +43,7 @@
             <artifactId>modelmapper</artifactId>
             <version>2.3.8</version>
         </dependency>	
-		 <dependency>
-            <groupId>org.apache.maven</groupId>
-             <artifactId>maven-model</artifactId>
-            <version>3.0.3</version>
-        </dependency>
+		 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -63,9 +60,11 @@
 	  <pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
+	          <groupId>org.apache.maven.plugins</groupId>
+	          <artifactId>maven-compiler-plugin</artifactId>
+	          <version>3.8.0</version>
+	          <configuration>
+	               <release>11</release>  <!--or <release>10</release>-->
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -73,7 +72,9 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
+	        </plugin>
+				
+			
 			<plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
