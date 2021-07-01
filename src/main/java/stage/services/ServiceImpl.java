@@ -48,27 +48,6 @@ public class ServiceImpl implements ServiceApp {
 		if (cat.getQt() != 0 ) 
 			catInBase.setQt(cat.getQt());
 		catInBase.setDateModif(new Timestamp(System.currentTimeMillis()));
-		// modify products into category
-		List<Product> productsInBase = catInBase.getProducts() ; 
-		List<Product> products = cat.getProducts() ; 
-		for (Product newPro : products) {
-			for (Product oldPro : productsInBase) {
-				if (newPro.getId() == oldPro.getId()) { 
-					if (newPro.getProductNom() != null )
-						oldPro.setProductNom(newPro.getProductNom());
-					if (newPro.getQt() != 0 ) {
-						oldPro.setQt(newPro.getQt());
-					    oldPro.setDisponible(true);
-					}
-					if (newPro.getQt() == 0 ) {
-						oldPro.setQt(newPro.getQt());
-					    oldPro.setDisponible(false);
-					}
-					oldPro.setDateofmodify(new Timestamp(System.currentTimeMillis()));				}
-				
-			}
-			
-		}
 
 		return categoryRepo.save(catInBase);
 	}

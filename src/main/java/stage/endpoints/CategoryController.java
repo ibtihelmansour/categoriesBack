@@ -89,11 +89,11 @@ public class CategoryController {
 		Category category = this.findCategoryById(idcat) ; 
 		product.setCategory(category);
 		product.setDateofmodify(null);
-		if (product.getQt() > 0 ) { 
+		if (product.getQt() > 0 ) 
 			product.setDisponible(true);
-		}else { 
-			product.setDisponible(false);
-		}
+		
+	  product.setDisponible(false);
+		
 		repoProduct.save(product) ; 
 		return product  ; 
 	}
