@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Order;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ class CategoriesApp1ApplicationTests {
 		  	assertNotNull(repoC.findById(1L).get()); 	
 	  }
 	  @Test
-	  void AllCategories () { 
+	  void allCategories () { 
 		  List<Category> listCat =  repoC.findAll() ;
 		  assertThat(listCat).size().isPositive();
 		  }
@@ -79,7 +79,7 @@ class CategoriesApp1ApplicationTests {
 	  }
 	  
 	  @Test
-	  void AllProducts() { 
+	  void allProducts() { 
 		  List<Product> listPro =  repoP.findAll() ;
 		  assertThat(listPro).size().isPositive();
 		  }
