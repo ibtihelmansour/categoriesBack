@@ -1,7 +1,7 @@
 package stage.services;
 
 import java.sql.Timestamp;
-import java.util.List;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import stage.models.Category;
-import stage.models.Product;
+
 import stage.repositories.CategoryRepo;
 
 
