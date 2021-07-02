@@ -89,10 +89,14 @@ public class CategoryController {
 		var product = mapper.map(productdto, Product.class) ; 
 		product.setCategory(category);
 		product.setDateofmodify(null);
-		if (product.getQt() > 0 ) 
+		if (product.getQt() > 0 ) {
 			product.setDisponible(true);
+		}else {
+			 product.setDisponible(false);
+		}
+			
 		
-	  product.setDisponible(false);
+	 
 		
 		repoProduct.save(product) ; 
 		return product  ; 
