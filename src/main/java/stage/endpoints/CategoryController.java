@@ -4,9 +4,8 @@ package stage.endpoints;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import lombok.var;
+import stage.dto.CategoryDto;
+import stage.dto.ProductDto;
 import stage.models.Category;
 import stage.models.Product;
 import stage.repositories.CategoryRepo;
@@ -35,11 +36,13 @@ public class CategoryController {
 	private ServiceImpl service  ;
 	private final CategoryRepo repo ;
 	private final ProductRepo repoProduct ; 
+	private ModelMapper mapper ; 
 	
 
 	@Autowired
-	public CategoryController(ServiceImpl service ,  CategoryRepo repo , ProductRepo repoProduct) {
+	public CategoryController(ServiceImpl service ,  CategoryRepo repo , ProductRepo repoProduct , ModelMapper mapper) {
 		super();
+		this.mapper = mapper ; 
 		this.service = service;
 		this.repo = repo ;
 		this.repoProduct = repoProduct; 
@@ -59,34 +62,31 @@ public class CategoryController {
 	}
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/add")
-	public Category createNewCategory (@Validated @RequestBody Category category1 ) { 
-	    
-		Category category =  repo.save(category1) ; 
-		List<Product> products = category1.getProducts() ;
-		for ( Product product : products) { 
-			product.setCategory( category);
-		   product.setDateofmodify(null);
-			repoProduct.save(product) ; 
-		}
-		return  category; 
+	public Category createNewCategory (@RequestBody CategoryDto category1 ) { 
+	    var categorie = mapper.map(category1, Category.class) ; 
+	
+
+		return repo.save(categorie) ;
 		
 	}
 	@CrossOrigin("http://localhost:4200")
 	@DeleteMapping("/deletecat/{id}")
 	public Category deleteCategory( @PathVariable("id") long id) { 
-		  Category cat = this.findCategoryById(id) ; 
+		  var cat = this.findCategoryById(id) ; 
 		  repo.deleteById(id);
 		return cat; 
 	}
 	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/updateCat/{id}") 
-	public Category modifyCategory (@PathVariable("id") long id , @RequestBody Category category) { 
-		return service.modifyCategory(id, category) ; 
+	public Category modifyCategory (@PathVariable("id") long id , @RequestBody CategoryDto category) { 
+		var categorie = mapper.map(category, Category.class) ; 
+		return service.modifyCategory(id, categorie) ; 
 	}
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/addProduct/{idCat}")
-	public Product createProductByCategory (@PathVariable("idCat") long idcat ,@RequestBody Product product) { 
-		Category category = this.findCategoryById(idcat) ; 
+	public Product createProductByCategory (@PathVariable("idCat") long idcat ,@RequestBody ProductDto productdto) { 
+		var category = this.findCategoryById(idcat) ; 
+		var product = mapper.map(productdto, Product.class) ; 
 		product.setCategory(category);
 		product.setDateofmodify(null);
 		if (product.getQt() > 0 ) 
