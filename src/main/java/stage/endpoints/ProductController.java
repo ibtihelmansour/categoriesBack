@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.var;
 import stage.dto.ProductDto;
 import stage.models.Product;
 import stage.repositories.ProductRepo;
@@ -47,7 +46,7 @@ public class ProductController {
  	}
 	@DeleteMapping("delete/{id}")
 	public Product deleteProduct(@PathVariable("id") long id ) { 
-	   var  product = this.findById(id) ; 
+	   Product  product = this.findById(id) ; 
 		repo.deleteById(id);
 		return product; 
 	
@@ -70,7 +69,7 @@ public class ProductController {
 	@PutMapping("/{id}")
 	public Product modifProduct ( @PathVariable("id") long id , @RequestBody ProductDto productdto) { 
 		 
-		   var product2 = this.findById(id) ; 
+		   Product product2 = this.findById(id) ; 
 		    product2.setDateofmodify(new Timestamp(System.currentTimeMillis()));
 			if (productdto.getProductNom() != null) 
 				product2.setProductNom(productdto.getProductNom() );

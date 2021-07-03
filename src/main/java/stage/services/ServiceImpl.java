@@ -2,7 +2,6 @@ package stage.services;
 
 import java.sql.Timestamp;
 
-import lombok.var;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -44,7 +43,7 @@ public class ServiceImpl implements ServiceApp {
 }
 
 	public Category modifyCategory(long id, Category cat) {
-		var catInBase = this.findCategoryById(id) ; 
+		Category catInBase = this.findCategoryById(id) ; 
 		if ( cat.getNom() != null)
 			catInBase.setNom(cat.getNom());
 		if (cat.getQt() != 0 ) 

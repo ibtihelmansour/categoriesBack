@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.var;
+
 import stage.dto.CategoryDto;
 import stage.dto.ProductDto;
 import stage.models.Category;
@@ -63,7 +63,7 @@ public class CategoryController {
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/add")
 	public Category createNewCategory (@RequestBody CategoryDto category1 ) { 
-	    var categorie = mapper.map(category1, Category.class) ; 
+	    Category categorie = mapper.map(category1, Category.class) ; 
 	
 
 		return repo.save(categorie) ;
@@ -72,21 +72,21 @@ public class CategoryController {
 	@CrossOrigin("http://localhost:4200")
 	@DeleteMapping("/deletecat/{id}")
 	public Category deleteCategory( @PathVariable("id") long id) { 
-		  var cat = this.findCategoryById(id) ; 
+		  Category cat = this.findCategoryById(id) ; 
 		  repo.deleteById(id);
 		return cat; 
 	}
 	@CrossOrigin("http://localhost:4200")
 	@PutMapping("/updateCat/{id}") 
 	public Category modifyCategory (@PathVariable("id") long id , @RequestBody CategoryDto category) { 
-		var categorie = mapper.map(category, Category.class) ; 
+		Category categorie = mapper.map(category, Category.class) ; 
 		return service.modifyCategory(id, categorie) ; 
 	}
 	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/addProduct/{idCat}")
 	public Product createProductByCategory (@PathVariable("idCat") long idcat ,@RequestBody ProductDto productdto) { 
-		var category = this.findCategoryById(idcat) ; 
-		var product = mapper.map(productdto, Product.class) ; 
+		Category category = this.findCategoryById(idcat) ; 
+		Product product = mapper.map(productdto, Product.class) ; 
 		product.setCategory(category);
 		product.setDateofmodify(null);
 		if (product.getQt() > 0 ) {
