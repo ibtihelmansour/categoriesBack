@@ -101,6 +101,7 @@ public class CategoryController {
 		
 	@GetMapping ("/products/{id}")
 	public List<Product> allProductsByCat ( @PathVariable("id") long id ) { 
+		System.out.println("test");
 		List<Product> products = repoProduct.findAll() ; 
 		List<Product> productsBycat= new ArrayList<>() ; 
 		
