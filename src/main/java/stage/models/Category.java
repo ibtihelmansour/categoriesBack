@@ -1,6 +1,7 @@
 package stage.models;
 
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -36,15 +37,15 @@ public class Category {
 	private String nom ; 
 	private int qt ; 
 	@CreationTimestamp
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
+	//@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column( nullable = false, updatable=false)
-	private Date  dateofcreation ;
+	private Timestamp  dateofcreation ;
 
 	
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	private Date dateModif ; 
+    //@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
+	//@Temporal(TemporalType.TIMESTAMP)
+	private Timestamp dateModif ; 
 	
 	@OneToMany(mappedBy = "category"  , cascade=  CascadeType.REMOVE , fetch = FetchType.LAZY)
 	private List<Product> products ; 

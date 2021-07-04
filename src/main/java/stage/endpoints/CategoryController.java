@@ -94,10 +94,7 @@ public class CategoryController {
 		}else {
 			 product.setDisponible(false);
 		}
-			
-		
-	 
-		
+
 		repoProduct.save(product) ; 
 		return product  ; 
 	}

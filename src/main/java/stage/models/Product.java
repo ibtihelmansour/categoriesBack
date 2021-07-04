@@ -1,5 +1,6 @@
 package stage.models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,14 +36,14 @@ public class Product {
 	private int qt ; 
 	private boolean disponible ; 
 	@CreationTimestamp
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
+	//@JsonFormat(pattern="yyyy-MM-dd")
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column( nullable = false, updatable=false)
-	private Date dateofcreation ;
+	private Timestamp dateofcreation ;
 	
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
-	private Date dateofmodify ;
+	//@JsonFormat(pattern="yyyy-MM-dd")
+	//@Temporal(TemporalType.TIMESTAMP)
+	private Timestamp dateofmodify ;
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name="category_id" , referencedColumnName = "id")
