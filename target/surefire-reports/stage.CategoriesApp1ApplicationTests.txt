@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: stage.CategoriesApp1ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 4.994 s <<< FAILURE! - in stage.CategoriesApp1ApplicationTests
+deleteCategory  Time elapsed: 0.192 s  <<< ERROR!
+org.springframework.dao.EmptyResultDataAccessException: No class stage.models.Category entity with id 1 exists!
+	at stage.CategoriesApp1ApplicationTests.deleteCategory(CategoriesApp1ApplicationTests.java:67)
+
+updateProduct  Time elapsed: 0.007 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.updateProduct(CategoriesApp1ApplicationTests.java:95)
+
+updateCategorty  Time elapsed: 0.006 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.updateCategorty(CategoriesApp1ApplicationTests.java:60)
+
+deleteProduct  Time elapsed: 0.006 s  <<< ERROR!
+org.springframework.dao.EmptyResultDataAccessException: No class stage.models.Product entity with id 1 exists!
+	at stage.CategoriesApp1ApplicationTests.deleteProduct(CategoriesApp1ApplicationTests.java:102)
+
+testCreateProduct  Time elapsed: 0.049 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.testCreateProduct(CategoriesApp1ApplicationTests.java:78)
+
+testCreateCategory  Time elapsed: 0.016 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.testCreateCategory(CategoriesApp1ApplicationTests.java:44)
+
+singleCategory  Time elapsed: 0.005 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.singleCategory(CategoriesApp1ApplicationTests.java:53)
+
+singleProduct  Time elapsed: 0.005 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at stage.CategoriesApp1ApplicationTests.singleProduct(CategoriesApp1ApplicationTests.java:88)
+

@@ -1,0 +1,12 @@
+stage\CategoriesApp1Application.class
+stage\repositories\CategoryRepo.class
+stage\configuration\BeanConfig.class
+stage\endpoints\CategoryController.class
+stage\services\ServiceImpl.class
+stage\dto\CategoryDto.class
+stage\dto\ProductDto.class
+stage\services\ServiceApp.class
+stage\endpoints\ProductController.class
+stage\models\Category.class
+stage\models\Product.class
+stage\repositories\ProductRepo.class
