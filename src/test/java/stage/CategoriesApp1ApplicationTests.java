@@ -24,7 +24,7 @@ import stage.repositories.ProductRepo;
 @RunWith(SpringRunner.class) 
 class CategoriesApp1ApplicationTests {
 
-	/*private CategoryRepo repoC ; 
+	private CategoryRepo repoC ; 
 	private ProductRepo repoP ;
 	 
 	  
@@ -100,6 +100,6 @@ class CategoriesApp1ApplicationTests {
 	  @Test
 	   void deleteProduct() { 
 		  repoP.deleteById(1L);
-		  assertThat(repoP.existsById(1L)).isFalse() ;   }*/
+		  assertThat(repoP.existsById(1L)).isFalse() ;   }
 	  
 	}

@@ -36,13 +36,9 @@ public class Product {
 	private int qt ; 
 	private boolean disponible ; 
 	@CreationTimestamp
-	//@JsonFormat(pattern="yyyy-MM-dd")
-	//@Temporal(TemporalType.TIMESTAMP)
+
 	@Column( nullable = false, updatable=false)
 	private Timestamp dateofcreation ;
-	
-	//@JsonFormat(pattern="yyyy-MM-dd")
-	//@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp dateofmodify ;
 	@ManyToOne
 	@JsonIgnore
